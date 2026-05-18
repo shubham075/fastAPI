@@ -15,6 +15,6 @@ class UserCreate(UserBase):
 class UserResponse(UserBase):
     id:int
 
-    class config:
-        #allow pydantic to read fro sqlalchemy models...
+    class Config:
+        # allow pydantic to read from sqlalchemy models...
         from_attributes=True
