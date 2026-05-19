@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Verify mobile OTP</h1>
+
+{% if message %}
+<div class="notice">{{ message }}</div>
+{% endif %}
+
+{% if error %}
+<div class="alert">{{ error }}</div>
+{% endif %}
+
+<form method="post" action="/verify-registration">
+    <input type="hidden" name="mobile" value="{{ mobile }}">
+
+    <label>
+        Mobile number
+        <input value="{{ mobile }}" disabled>
+    </label>
+
+    <label>
+        OTP
+        <input name="otp" inputmode="numeric" minlength="6" maxlength="6" required>
+    </label>
+
+    <button type="submit">Verify and create account</button>
+</form>
+
+<div class="link-row">
+    <a href="/register">Start registration again</a>
+</div>
+{% endblock %}

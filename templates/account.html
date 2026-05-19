@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Account</h1>
+
+<div class="details">
+    <div><span>Name</span><strong>{{ user.first_name }} {{ user.last_name }}</strong></div>
+    <div><span>Email</span><strong>{{ user.email_id }}</strong></div>
+    <div><span>Mobile</span><strong>{{ user.mobile }}</strong></div>
+    <div><span>Date of birth</span><strong>{{ user.date_of_birth }}</strong></div>
+    <div><span>Gender</span><strong>{{ user.gender }}</strong></div>
+    <div><span>Role</span><strong>{{ user.role }}</strong></div>
+    <div><span>Status</span><strong>{% if user.is_active %}Active{% else %}Inactive{% endif %}</strong></div>
+</div>
+
+<form method="post" action="/logout">
+    <button type="submit">Logout</button>
+</form>
+{% endblock %}

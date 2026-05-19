@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create account</h1>
+
+{% if error %}
+<div class="alert">{{ error }}</div>
+{% endif %}
+
+<form method="post" action="/register">
+    <div class="grid">
+        <label>
+            First name
+            <input name="first_name" value="{{ values.first_name or '' }}" required>
+        </label>
+        <label>
+            Last name
+            <input name="last_name" value="{{ values.last_name or '' }}" required>
+        </label>
+    </div>
+
+    <label>
+        Email
+        <input type="email" name="email_id" value="{{ values.email_id or '' }}" required>
+    </label>
+
+    <label>
+        Mobile number
+        <input name="mobile" value="{{ values.mobile or '' }}" placeholder="+919876543210" required>
+    </label>
+
+    <div class="grid">
+        <label>
+            Date of birth
+            <input type="date" name="date_of_birth" value="{{ values.date_of_birth or '' }}" required>
+        </label>
+        <label>
+            Gender
+            <select name="gender" required>
+                <option value="">Select gender</option>
+                <option value="male" {% if values.gender == "male" %}selected{% endif %}>Male</option>
+                <option value="female" {% if values.gender == "female" %}selected{% endif %}>Female</option>
+                <option value="other" {% if values.gender == "other" %}selected{% endif %}>Other</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="grid">
+        <label>
+            Password
+            <input type="password" name="password" minlength="6" required>
+        </label>
+        <label>
+            Confirm password
+            <input type="password" name="confirm_password" minlength="6" required>
+        </label>
+    </div>
+
+    <button type="submit">Send OTP</button>
+</form>
+
+<div class="link-row">
+    Already registered? <a href="/login">Login</a>
+</div>
+{% endblock %}
